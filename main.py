@@ -7,8 +7,8 @@ import os
 reload(sys)
 sys.setdefaultencoding("utf-8")
 redis = r.StrictRedis(host='localhost', port=6379, db=0) # تنظیمات ردیس
-bot = telebot.TeleBot('TOKEN')
-admin = 'ID ADMIN'
+bot = telebot.TeleBot('5809206032:AAGjvK-BidiI-cmOiLP7lbVRIVrx1Ul8byw')
+admin = '5149127304'
 
 @bot.message_handler(content_types=['text', 'audio', 'document', 'photo', 'sticker'])
 def m(m):
@@ -16,7 +16,7 @@ def m(m):
         if m.chat.type == 'private':
             banlist = redis.sismember('banlist_pmbot', '{}'.format(m.from_user.id))
             if m.text == '/start' or m.text == '/help':
-                bot.send_message(m.chat.id, 'پیام خودتونو ارسال کنید\n @taylor_team')
+                bot.send_message(m.chat.id, 'سلام💜\nپیام ناشناس خود را ارسال کنید.')
                 redis.sadd('member_pmbot','{}'.format(m.from_user.id))
             if str(m.from_user.id) not in admin:
                 if str(banlist) == 'False':
